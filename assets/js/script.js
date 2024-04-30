@@ -69,7 +69,7 @@ function handleAddTask(event){
   localStorage.setItem("nextId", nextId);
 
   // Render updated task list
-  renderTaskList();
+  renderTaskList(); // Call the renderTaskList() function after adding a new task
 
   // Close modal
   $("#task-modal").modal("hide");
@@ -114,9 +114,9 @@ $(document).ready(function () {
   renderTaskList();
 
   // Event listeners
-  $("#task-form").submit(handleAddTask); // Event listener for form submission
-  $(".delete-btn").click(handleDeleteTask); // Event listener for "Delete" button on task cards
-  $(".lane").droppable({ // Event listener for making task cards draggable
+  $("#task-form").submit(handleAddTask);
+  $(".delete-btn").click(handleDeleteTask);
+  $(".lane").droppable({
     accept: ".task-card",
     drop: handleDrop
   });
@@ -126,4 +126,5 @@ $(document).ready(function () {
     $("#task-modal").modal("show");
   });
 });
+
 
