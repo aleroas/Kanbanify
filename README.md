@@ -37,3 +37,12 @@ jQuery and jQuery UI for DOM manipulation and drag-and-drop functionality.
 //Screenshot
 
 ![Screen Shot 2024-04-23 at 9 58 47 PM](https://github.com/aleroas/Kanbanify/assets/159299095/8ac7452a-3b8d-4b98-886f-3f2c9404dc0b)
+
+
+
+https://github.com/aleroas/Kanbanify/assets/159299095/723d3be5-ea54-4545-a58e-4bc6500805fa
+
+
+
+
+
