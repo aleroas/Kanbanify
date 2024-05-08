@@ -24,13 +24,48 @@ function createTaskCard(task) {
 // Function to render the task list and make cards draggable
 function renderTaskList() {
   // Clear existing cards
-  $(".lane .card-body").empty();
-  
-  // Iterate over tasks and render cards
+  $("#not-started-cards").empty();
+  $("#completed-cards").empty();
+  $("#in-progress-cards").empty();
+
+
+
   taskList.forEach(task => {
     let card = createTaskCard(task);
     $(`#${task.status}-cards`).append(card);
   });
+
+
+
+  
+// //   // Iterate over tasks and render cards
+// for (var i = 0; i < taskList.length; i++) {
+//     let task = taskList[i];
+//     let card = createTaskCard(task);
+//     let status = task.status;
+//     let container;
+  
+//     // Check the status and determine the appropriate container to append the card to
+//     if (status === "not-started") {
+//       container = document.getElementById("not-started-cards");
+//     } else if (status === "in-progress") {
+//       container = document.getElementById("in-progress-cards");
+//     } else if (status === "completed") {
+//       container = document.getElementById("completed-cards");
+//     }
+  
+//     // Append the card to the appropriate container
+//     if (container) {
+//       container.appendChild(card);
+//     }
+//   };
+//   for(var i=0; i < taskList.length; i++){
+//     let card = createTaskCard(taskList[i]);
+//     console.log ((`#${taskList[i].status}-cards`))
+//     $("#not-started").append(card);
+//     // creat if statement for the status 
+//   };
+
 
   // Make cards draggable
   $(".task-card").draggable({
@@ -47,6 +82,7 @@ function renderTaskList() {
 
 // Function to handle adding a new task
 function handleAddTask(event){
+    console.log ("Hello")
   event.preventDefault();
   let title = $("#task-title").val();
   let description = $("#task-description").val();
@@ -60,6 +96,7 @@ function handleAddTask(event){
     deadline: deadline,
     status: "not-started"
   };
+  console.log (newTask)
 
   // Add new task to task list
   taskList.push(newTask);
@@ -67,6 +104,8 @@ function handleAddTask(event){
   // Save task list and nextId to localStorage
   localStorage.setItem("tasks", JSON.stringify(taskList));
   localStorage.setItem("nextId", nextId);
+  $("#task-title").val(" ");
+  
 
   // Render updated task list
   renderTaskList(); // Call the renderTaskList() function after adding a new task
@@ -114,7 +153,7 @@ $(document).ready(function () {
   renderTaskList();
 
   // Event listeners
-  $("#task-form").submit(handleAddTask);
+  $("#task-form").on("submit",handleAddTask);
   $(".delete-btn").click(handleDeleteTask);
   $(".lane").droppable({
     accept: ".task-card",
@@ -126,5 +165,3 @@ $(document).ready(function () {
     $("#task-modal").modal("show");
   });
 });
-
-
